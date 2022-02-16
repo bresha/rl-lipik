@@ -4,8 +4,8 @@ import time
 
 class Env():
     def __init__(self):
-        self.env_rows = 3
-        self.env_cols = 3
+        self.env_rows = 2
+        self.env_cols = 2
         
         self.actions = ['up', 'down', 'left', 'right', 'pick', 'drop']
 
@@ -32,7 +32,7 @@ class Env():
             self.grid = np.zeros((self.env_rows, self.env_cols))
             self.grid[self.agent_position[0]][self.agent_position[1]] = 1
             self.grid[self.item_position[0]][self.item_position[1]] = 2
-        elif self.agent_position == self.item_position:
+        elif self.agent_position == self.item_position and not self.is_item_picked:
             self.grid = np.zeros((self.env_rows, self.env_cols))
             self.grid[self.agent_position[0]][self.agent_position[1]] = 3
         elif self.agent_position == self.item_position and self.is_item_picked:
